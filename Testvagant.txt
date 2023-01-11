@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+    int budget=35;
+
+    vector<pair<string,float>> v;
+    v.push_back({"TOI",26});
+    v.push_back({"Hindu",20.5});
+    v.push_back({"ET",34});
+    v.push_back({"BM",10.5});
+    v.push_back({"HT",18});
+
+    int n=v.size();
+    vector<vector<string>> ans;
+
+    for(int i=0;i<n-1;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(v[i].second+v[j].second<=budget)
+                ans.push_back({v[i].first,v[j].first});
+        }
+    }
+    for(auto it:ans)
+        cout<<it[0]<<"  "<<it[1]<<endl;
+}
+[6:01 pm, 11/01/2023] Praful: // { Driver Code Starts
+// Initial Template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+    int budget=40;
+    map<string,vector<float>> m;
+
+    m["TOI"]={3,3,3,3,3,5,6};
+    m["Hindu"]={2.5,2.5,2.5,2.5,2.5,4,4};
+    m["ET"]={4,4,4,4,4,4,10};
+    m["BM"]={1.5,1.5,1.5,1.5,1.5,1.5,1.5};
+    m["HT"]={2,2,2,2,2,4,4};
+
+    int n=m.size();
+
+    vector<pair<string,int>> v;
+    for(auto it:m)
+    {
+        float sum=0;
+        for(float x:it.second)
+        {
+            sum+=x;
+        }
+        v.push_back({it.first,sum});
+    }
+
+    vector<vector<string>> ans;
